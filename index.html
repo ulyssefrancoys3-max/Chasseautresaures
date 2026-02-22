@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Validation Zerobin</title>
+<style>
+body {
+  background:#0f172a;
+  color:#e2e8f0;
+  font-family:Arial, sans-serif;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  height:100vh;
+}
+.box {
+  background:#1e293b;
+  padding:30px;
+  border-radius:10px;
+  text-align:center;
+  width:350px;
+}
+input {
+  width:100%;
+  padding:10px;
+  margin-top:15px;
+  border-radius:6px;
+  border:none;
+}
+button {
+  margin-top:15px;
+  padding:10px 20px;
+  border:none;
+  border-radius:6px;
+  background:#38bdf8;
+  color:#000;
+  font-weight:bold;
+  cursor:pointer;
+}
+.result {
+  margin-top:20px;
+  font-size:18px;
+  color:#22c55e;
+}
+</style>
+</head>
+<body>
+
+<div class="box">
+  <h2>Entrez le code Zerobin</h2>
+  <input type="number" id="code" placeholder="Code donné par Zerobin">
+  <button onclick="calculer()">Valider</button>
+  <div class="result" id="result"></div>
+</div>
+
+<script>
+function calculer() {
+  const valeur = parseFloat(document.getElementById("code").value);
+
+  if (isNaN(valeur)) {
+    document.getElementById("result").innerHTML = "Code invalide.";
+    return;
+  }
+
+  const port = valeur / 21216630.8526;
+
+  document.getElementById("result").innerHTML =
+    "Port calculé : <strong>" + port.toFixed(0) + "</strong><br>" +
+    "➡️ Rendez-vous sur : http://localhost:" + port.toFixed(0);
+}
+</script>
+
+</body>
+</html>
